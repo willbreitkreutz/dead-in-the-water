@@ -1,12 +1,13 @@
 import Navbar from "./app_components/navbar";
 import InfoCard from "./app_components/info-card";
+import LocationList from "./app_components/location-list";
 
 function App() {
   return (
     <div>
       <Navbar />
       <div className="container pt-4">
-        <h2>Kansas City District</h2>
+        <h2>Vicksburg District</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -42,6 +43,9 @@ function App() {
             />
           </div>
         </div>
+        {/* END ROW */}
+        <hr />
+        <LocationList />
       </div>
     </div>
   );
