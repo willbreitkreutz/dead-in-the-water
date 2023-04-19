@@ -22,7 +22,7 @@ function useAPI(endpoint, params) {
         return response.json();
       })
       .then((json) => {
-        setResults(json.entries);
+        setResults(json);
       })
       .catch((err) => {
         console.log(err);
