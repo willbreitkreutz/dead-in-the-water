@@ -1,5 +1,6 @@
 import useAPI from "../app_hooks/useAPI";
 import Loader from "../app_components/loader";
+import Map from "../app_components/map";
 
 const displayAttributes = [
   {
@@ -46,7 +47,11 @@ function LocationDetail({ params }) {
             </div>
           </div>
         </div>
-        <div className="col"></div>
+        <div className="col">
+          <div className="mt-3">
+            <Map lon={location.longitude} lat={location.latitude} />
+          </div>
+        </div>
       </div>
     </div>
   );
