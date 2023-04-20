@@ -27,7 +27,7 @@ function useAPI(endpoint, params) {
       .catch((err) => {
         console.log(err);
       });
-  }, [endpoint]);
+  }, [endpoint, paramList]);
 
   return results;
 }
