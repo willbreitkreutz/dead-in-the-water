@@ -1,8 +1,11 @@
 import Chart from "./chart";
 import useAPI from "../app_hooks/useAPI";
 import Loader from "./loader";
+import { useState } from "react";
 
 function TimeseriesChart({ location }) {
+  const [tsChecked, setTsChecked] = useState("");
+
   const timeseries = useAPI("catalog/TIMESERIES", {
     like: `${location.name}.*`,
     office: location["office-id"],
@@ -24,8 +27,25 @@ function TimeseriesChart({ location }) {
               if (a.name < b.name) return -1;
               return 0;
             })
-            .map((ts) => {
-              return <div key={ts.name}>{ts.name}</div>;
+            .map((ts, i) => {
+              return (
+                <div key={ts.name} className="form-check">
+                  <label className="form-check-label">
+                    <input
+                      type="radio"
+                      className="form-check-input"
+                      name="ts-radio"
+                      id={`ts-radio-${i}`}
+                      value={ts.name}
+                      checked={ts.name === tsChecked}
+                      onChange={(e) => {
+                        setTsChecked(e.currentTarget.value);
+                      }}
+                    />
+                    {ts.name}
+                  </label>
+                </div>
+              );
             })}
         </div>
       </div>

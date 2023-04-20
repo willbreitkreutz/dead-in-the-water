@@ -1,7 +1,7 @@
 import useAPI from "../app_hooks/useAPI";
 import Loader from "../app_components/loader";
 import Map from "../app_components/map";
-import TimeseriesChart from "../app_components/timeseries-chart";
+import TimeseriesChart from "../app_components/timeseries-chart-container";
 
 const displayAttributes = [
   {
