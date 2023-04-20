@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const apiRoot = "https://cwms-data.usace.army.mil/cwms-data/";
 
-function useAPI(endpoint, params) {
+function useAPI(endpoint, params, isValid = true) {
   const [results, setResults] = useState([]);
 
   const paramList = Object.keys(params)

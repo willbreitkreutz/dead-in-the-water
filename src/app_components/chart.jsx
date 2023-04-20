@@ -8,7 +8,7 @@ function Chart({ data }) {
     if (chartEl.current) {
       Plotly.newPlot(chartEl.current, data);
     }
-  }, [chartEl.current]);
+  }, [chartEl.current, data]);
 
   return <div ref={chartEl}></div>;
 }
