@@ -23,7 +23,7 @@
 13. In the terminal you opened inside your root project directory enter this command: `npm create vite@latest`
   Do this for the following prompts:  
   A. Type `y` press `enter`  
-  B. Give it a project name, for example: `<DISTICT> Water App`, press enter  _(You can just start typing it)_
+  B. Give it a project name, for example: `<DISTICT> Water App`, press enter  _(You can just start typing it)_  
   C. Press enter on package name, unless you want to change this  
   D. Press the down arrow key and hover over React, Press enter  
   E. Navigate down to JavaScript, press enter  
