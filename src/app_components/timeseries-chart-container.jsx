@@ -4,7 +4,7 @@ import { useState } from "react";
 import TimeseriesChart from "./timeseries-chart";
 
 function TimeseriesChartContainer({ location }) {
-  const [tsChecked, setTsChecked] = useState("");
+  const [tsChecked, setTsChecked] = useState([]);
 
   const timeseries = useAPI("catalog/TIMESERIES", {
     like: `${location.name}.*`,
@@ -32,14 +32,22 @@ function TimeseriesChartContainer({ location }) {
                 <div key={ts.name} className="form-check">
                   <label className="form-check-label">
                     <input
-                      type="radio"
+                      type="checkbox"
                       className="form-check-input"
                       name="ts-radio"
                       id={`ts-radio-${i}`}
                       value={ts.name}
-                      checked={ts.name === tsChecked}
+                      checked={tsChecked.indexOf(ts.name) !== -1}
                       onChange={(e) => {
-                        setTsChecked(e.currentTarget.value);
+                        if (e.currentTarget.checked) {
+                          setTsChecked([...tsChecked, e.currentTarget.value]);
+                        } else {
+                          const idx = tsChecked.indexOf(e.currentTarget.value);
+                          if (idx !== -1) {
+                            tsChecked.splice(idx, 1);
+                            setTsChecked([...tsChecked]);
+                          }
+                        }
                       }}
                     />
                     {ts.name}
@@ -50,7 +58,7 @@ function TimeseriesChartContainer({ location }) {
         </div>
       </div>
       <div className="col-9">
-        <TimeseriesChart tsName={tsChecked} office={location["office-id"]} />
+        <TimeseriesChart tsNames={tsChecked} office={location["office-id"]} />
       </div>
     </>
   );

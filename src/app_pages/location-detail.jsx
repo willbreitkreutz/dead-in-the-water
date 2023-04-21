@@ -26,7 +26,7 @@ function LocationDetail({ params }) {
   const name = params.name;
 
   const location = useAPI(`locations/${name}`, {
-    office: "MVK",
+    office: "SAW",
   });
 
   if (Array.isArray(location)) return <Loader />;

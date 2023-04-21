@@ -6,7 +6,7 @@ function LocationList() {
   const [searchString, setSearchString] = useState("");
 
   const locations = useAPI("catalog/LOCATIONS", {
-    office: "MVK",
+    office: "SAW",
     "page-size": 1000,
   });
 
