@@ -5,6 +5,8 @@ import TimeseriesChart from "./timeseries-chart";
 
 function TimeseriesChartContainer({ location }) {
   const [tsChecked, setTsChecked] = useState([]);
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
 
   const timeseries = useAPI("catalog/TIMESERIES", {
     like: `${location.name}.*`,
@@ -13,10 +15,31 @@ function TimeseriesChartContainer({ location }) {
 
   if (Array.isArray(timeseries)) return <Loader />;
 
-  const data = [];
   return (
     <>
       <div className="col-3">
+        <div className="form-group mb-3">
+          <label className="form-label">Start:</label>
+          <input
+            className="form-control"
+            type="datetime-local"
+            value={start}
+            onChange={(e) => {
+              setStart(e.target.value);
+            }}
+          ></input>
+        </div>
+        <div className="form-group mb-3">
+          <label className="form-label">End:</label>
+          <input
+            className="form-control"
+            type="datetime-local"
+            value={end}
+            onChange={(e) => {
+              setEnd(e.target.value);
+            }}
+          ></input>
+        </div>
         <div className="form-group">
           {timeseries.entries
             .filter((ts) => {
@@ -58,7 +81,12 @@ function TimeseriesChartContainer({ location }) {
         </div>
       </div>
       <div className="col-9">
-        <TimeseriesChart tsNames={tsChecked} office={location["office-id"]} />
+        <TimeseriesChart
+          tsNames={tsChecked}
+          office={location["office-id"]}
+          start={start}
+          end={end}
+        />
       </div>
     </>
   );

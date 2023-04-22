@@ -2,14 +2,21 @@ import { useState, useEffect } from "react";
 
 const apiRoot = "https://cwms-data.usace.army.mil/cwms-data/timeseries";
 
-function useAPISeries(office, tsNames) {
+function useAPISeries(office, tsNames, start, end) {
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     const requests = [];
 
     tsNames.forEach((tsName) => {
-      const paramList = `office=${office}&name=${tsName}`;
+      let paramList = `office=${office}&name=${tsName}`;
+
+      if (start && end) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        paramList += `&begin=${startDate.toISOString()}&end=${endDate.toISOString()}`;
+      }
+
       const url = `${apiRoot}?${paramList}`;
 
       requests.push(
@@ -29,7 +36,7 @@ function useAPISeries(office, tsNames) {
           setResults(fulfilledArray);
         });
       });
-  }, [tsNames]);
+  }, [tsNames, start, end]);
 
   return results;
 }

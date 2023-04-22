@@ -17,10 +17,10 @@ function parseValues(values = [], formatters) {
   return out;
 }
 
-function TimeseriesChart({ tsNames, office }) {
+function TimeseriesChart({ tsNames, office, start, end }) {
   if (!tsNames.length) return <p>Please select a timeseries...</p>;
 
-  const measurements = useAPISeries(office, tsNames);
+  const measurements = useAPISeries(office, tsNames, start, end);
 
   if (!measurements.length) return <Loader />;
 
@@ -33,6 +33,7 @@ function TimeseriesChart({ tsNames, office }) {
     ]);
 
     const trace = {
+      name: series.name,
       x: x,
       y: y,
       type: "lines+markers",
