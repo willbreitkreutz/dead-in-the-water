@@ -27,7 +27,8 @@
   C. Press enter on package name, unless you want to change this  
   D. Press the down arrow key and hover over React, Press enter  
   E. Navigate down to JavaScript, press enter  
-  F. Install [React Feather Matcher](https://www.npmjs.com/package/feather-route-matcher) with `npm i feather-route-matcher`  
+  F. Install [React Feather Matcher](https://www.npmjs.com/package/feather-route-matcher) with `npm i feather-route-matcher --save-dev`  
+  G. Install [Plotly.js](https://plotly.com/javascript/) with `npm i plotly.js-dist-min --save-dev`
 14. Run your app in dev mode with `npm run dev`, you should now see a link to open your app on your _local_ web browser! Ctrl + click to open it.  
 
 ## Deployment  
